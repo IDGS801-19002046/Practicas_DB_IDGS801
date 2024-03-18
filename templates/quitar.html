@@ -1,0 +1,30 @@
+{%extends "layout2.html"%}
+{%from "_macros.html" import camposNuevos%}
+{%block container%}
+    <div class="container">
+        <div class="row">
+            <table class="table table-striped table-bordered table-dark">
+                <thead>
+                    <tr class="tr-head">
+                        <th>Quitar de la orden</th>
+                        <th>Tamaño</th>
+                        <th>Ingredientes</th>
+                        <th>Num Pizzas</th>
+                        <th>SubTotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for pizza in pizzas%}
+                    <tr>
+                        <td><a href="quitarPizza?index={{pizza.i}}" class="btn btn-danger"><i class="icon-remove icon-white"></i> Eliminar</a></td>
+                        <td>{{pizza.tamanio}}</td>
+                        <td>{{pizza.ingredientes}}</td>
+                        <td>{{pizza.cantidad}}</td>
+                        <td>{{pizza.cuenta}}</td>             
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div> 
+{%endblock%}

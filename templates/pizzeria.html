@@ -1,0 +1,39 @@
+{%extends "layout2.html"%}
+{%from "_macros.html" import camposNuevos%}
+{%block container%}
+<div class="container">
+    <div class="container">
+        <h3>Pizzeria C</h3>
+        <form name="sent" action="/buscar" id="form1" method="post">
+                    {{camposNuevos(form.fecha,class="form-control")}}
+                <input type="hidden" name="csrf_token" value="{{csrf_token()}}"/>  
+                <input type="submit" class="btn btn-success" id="buscar" name="buscar" value="Buscar"/>
+        </form>
+        <br><br>
+            <table class="table table-striped table-bordered table-dark">
+                <thead>
+                    <tr class="tr-head">
+                        <th>Nombre</th>
+                        <th>Dirección</th>
+                        <th>Teléfono</th>
+                        <th>Numero De Pizzas</th>
+                        <th>Tamaño de la Pizza</th>
+                        <th>Ingredientes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for pizza in pizzas%}
+                    <tr>
+                        <td>{{pizza.nombre}}</td>
+                        <td>{{pizza.direccion}}</td>
+                        <td>{{pizza.telefono}}</td>
+                        <td>{{pizza.num_pizzas}}</td>
+                        <td>{{pizza.tam_pizzas}}</td>
+                        <td>{{pizza.ingredientes}}</td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+    </div>
+</div>
+{%endblock%}

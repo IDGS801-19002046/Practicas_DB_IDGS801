@@ -1,0 +1,69 @@
+{%extends "layout2.html"%}
+{%from "_macros.html" import camposNuevos%}
+{%block container%}
+    <div class="container text-center" style="background: #37d4cd; border-radius: 10px;">
+        <br>
+        <div class="row">
+            <form name="sent" action="/actualizar" id="pizzas" method="post">
+
+                <div class="row align-items-center">
+                    <div class="col">
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 float-label-form-group controls">
+                                {{camposNuevos(form.id,class="form-control")}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 float-label-form-group controls">
+                                {{camposNuevos(form.nombre,class="form-control")}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 float-label-form-group controls">
+                                {{camposNuevos(form.direccion,class="form-control")}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 float-label-form-group controls">
+                                {{camposNuevos(form.telefono,class="form-control")}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row align-items-center">
+                    <div class="col">
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 float-label-form-group controls">
+                                {{camposNuevos(form.tamanio,class="form-control ")}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 float-label-form-group controls">
+                                {{camposNuevos(form.ingredientes,class="form-control")}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 float-label-form-group controls">
+                                {{camposNuevos(form.cantidad,class="form-control")}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="csrf_token" value="{{csrf_token()}}"/>
+                <input type="submit" class="btn btn-danger" id="modificar" name="modificar" value="Modificar"/>
+            </form>
+        </div>
+        <br>
+    </div>  
+{%endblock%}

@@ -1,0 +1,89 @@
+{% extends "layout2.html" %}
+{%from "_macros.html" import camposNuevos%}
+{%block container%}
+
+  
+    <div class="container text-center" style="background: #37d4cd; border-radius: 10px;">
+        <br>
+        <div class="row">
+            <form name="sent" action="/pizzas" id="pizzas" method="post">
+
+                <div class="row align-items-center">
+                    <div class="col">
+                       <div class="row control-group">
+                            <div class="form-group col-xs-12 float-label-form-group controls">
+                                {{camposNuevos(form.nombre,class="form-control")}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 float-label-form-group controls">
+                                {{camposNuevos(form.direccion,class="form-control")}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 float-label-form-group controls">
+                                {{camposNuevos(form.telefono,class="form-control")}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row align-items-center">
+                    <div class="col">
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 float-label-form-group controls">
+                                {{camposNuevos(form.tamanio,class="form-control ")}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 float-label-form-group controls">
+                                {{camposNuevos(form.ingredientes,class="form-control")}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 float-label-form-group controls">
+                                {{camposNuevos(form.cantidad,class="form-control")}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="csrf_token" value="{{csrf_token()}}"/>
+                <input type="submit" id="reg_alum" name="registrar" value="Agregar"/>
+            </form>
+        </div>
+        <br>
+    </div>
+    <br><br>
+    <table class="table table-striped table-bordered table-dark">
+        <thead>
+            <tr class="tr-head">
+                <th>Tamaño</th>
+                <th>Ingredientes</th>
+                <th>Num Pizzas</th>
+                <th>SubTotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for pizza in pizzas%}
+            <tr>
+                <td>{{pizza.tamanio}}</td>
+                <td>{{pizza.ingredientes}}</td>
+                <td>{{pizza.cantidad}}</td>
+                <td>{{pizza.cuenta}}</td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+    <input type="hidden" name="csrf_token" value="{{csrf_token()}}"/>
+    <a href="quitar" class="btn btn-danger"><i class="icon-remove icon-white"></i> Quitar</a>
+    <a href="total" class="btn btn-success"><i class="icon-remove icon-white"></i> Terminar</a>
+    <a href="list" class="btn btn-primary"><i class="icon-remove icon-white"></i> Ver ventas</a>
+{%endblock%}
